@@ -7,3 +7,6 @@ bin/
 .nb-gradle/
 build/
 nbproject/private/
+
+# Credenciales de MySQL (Hito 2B): NUNCA subirlas
+**/db.properties
