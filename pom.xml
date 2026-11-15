@@ -16,6 +16,7 @@
         <module>parchis-p2p</module>
 	<module>parchis-reglas-mock</module>
 	<module>parchis-fabrica</module>
+        <module>parchis-presentacion</module>
     </modules>
 
     <properties>
