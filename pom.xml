@@ -12,6 +12,7 @@
 
     <modules>
         <module>parchis-dtos</module>
+        <module>parchis-interfaces</module>
     </modules>
 
     <properties>
