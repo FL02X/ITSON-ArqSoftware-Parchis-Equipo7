@@ -13,6 +13,7 @@
     <modules>
         <module>parchis-dtos</module>
         <module>parchis-interfaces</module>
+        <module>parchis-p2p</module>
     </modules>
 
     <properties>
