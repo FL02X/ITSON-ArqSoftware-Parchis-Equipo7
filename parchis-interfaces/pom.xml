@@ -12,7 +12,7 @@
 
     <artifactId>parchis-interfaces</artifactId>
     <packaging>jar</packaging>
-    <description>Paquete de interfaces del subsistema de reglas: IReglasParchisFachada.</description>
+    <description>Paquete de interfaces del subsistema Reglas: IReglasParchisFachada.</description>
 
     <dependencies>
         <dependency>
