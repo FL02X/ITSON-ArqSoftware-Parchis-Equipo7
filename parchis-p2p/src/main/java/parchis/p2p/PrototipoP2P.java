@@ -1,5 +1,9 @@
 package parchis.p2p;
 
+import parchis.comunicacion.ReceptorMensajes;
+import parchis.dtos.MensajeDTO;
+import parchis.dtos.TipoMensaje;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,12 +33,8 @@ public class PrototipoP2P {
         String nombre = args[0];
         int puerto = Integer.parseInt(args[1]);
 
-        Peer peer = new Peer(nombre, puerto, new IReceptorMensajes() {
-            @Override
-            public void mensajeRecibido(MensajeP2P mensaje) {
-                System.out.println("[" + mensaje.getRemitente() + "] " + mensaje.getContenido());
-            }
-
+        final Peer peer = new Peer(nombre);
+        peer.setEscuchaConexiones(new EscuchaConexiones() {
             @Override
             public void peerConectado(String nombrePeer) {
                 System.out.println("*** Conectado con " + nombrePeer);
@@ -45,15 +45,33 @@ public class PrototipoP2P {
                 System.out.println("*** Se desconecto " + nombrePeer);
             }
         });
-        peer.iniciar();
+        peer.suscribir(TipoMensaje.TEXTO, new ReceptorMensajes() {
+            @Override
+            public void recibir(MensajeDTO mensaje) {
+                System.out.println("[" + mensaje.getRemitente() + "] " + mensaje.getContenido());
+            }
+        });
+        peer.iniciar(puerto);
 
         System.out.println("Peer '" + nombre + "' escuchando en "
                 + InetAddress.getLocalHost().getHostAddress() + ":" + puerto);
 
         for (int i = 2; i < args.length; i++) {
-            String[] hostPuerto = args[i].split(":");
-            peer.conectarCon(hostPuerto[0], Integer.parseInt(hostPuerto[1]));
-            System.out.println("Buscando al peer " + args[i] + " ...");
+            final String[] hostPuerto = args[i].split(":");
+            final String destino = args[i];
+            System.out.println("Buscando al peer " + destino + " ...");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        peer.conectar(hostPuerto[0], Integer.parseInt(hostPuerto[1]));
+                    } catch (IOException ex) {
+                        System.err.println("[P2P] " + ex.getMessage());
+                    }
+                }
+            });
+            t.setDaemon(true);
+            t.start();
         }
         System.out.println("Escribe un mensaje y presiona Enter (/peers, /salir).");
 
@@ -71,11 +89,12 @@ public class PrototipoP2P {
                 System.out.println("Conectados: " + peer.getPeersConectados());
                 continue;
             }
-            int enviados = peer.enviarATodos(linea);
-            if (enviados == 0) {
+            if (peer.getPeersConectados().isEmpty()) {
                 System.out.println("(todavia no hay peers conectados)");
+            } else {
+                peer.enviar(new MensajeDTO(TipoMensaje.TEXTO, nombre, linea));
             }
         }
-        peer.detener();
+        peer.desconectar();
     }
 }

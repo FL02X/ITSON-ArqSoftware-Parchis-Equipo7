@@ -12,10 +12,22 @@
 
     <artifactId>parchis-p2p</artifactId>
     <packaging>jar</packaging>
+    <description>Subsistema Comunicacion con el estilo peer-to-peer.</description>
 
     <properties>
         <exec.mainClass>parchis.p2p.PrototipoP2P</exec.mainClass>
     </properties>
-    <description>Prototipo del estilo peer-to-peer.</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-comunicacion-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-dtos</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -12,6 +12,5 @@
 
     <artifactId>parchis-dtos</artifactId>
     <packaging>jar</packaging>
-    <description>DTOs que viajan entre capas (sin lógica de negocio).</description>
-
+    <description>DTOs que viajan entre capas y entre computadoras.</description>
 </project>

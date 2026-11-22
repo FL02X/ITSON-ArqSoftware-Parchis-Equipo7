@@ -13,6 +13,7 @@
     <modules>
         <module>parchis-dtos</module>
         <module>parchis-interfaces</module>
+        <module>parchis-comunicacion-api</module>
         <module>parchis-p2p</module>
 	<module>parchis-reglas-mock</module>
 	<module>parchis-fabrica</module>
