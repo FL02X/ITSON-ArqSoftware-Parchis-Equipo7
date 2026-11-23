@@ -1,0 +1,4 @@
+# Copia este archivo como db.properties (en la misma carpeta) y pon tus datos.
+db.url=jdbc:mysql://localhost:3306/parchis?serverTimezone=UTC
+db.usuario=root
+db.contrasena=TU_CONTRASENA
