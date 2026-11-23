@@ -18,6 +18,7 @@
         <module>parchis-datos</module>
         <module>parchis-perfiles</module>
 	<module>parchis-reglas-mock</module>
+        <module>parchis-reglas</module>
 	<module>parchis-fabrica</module>
         <module>parchis-presentacion</module>
     </modules>
