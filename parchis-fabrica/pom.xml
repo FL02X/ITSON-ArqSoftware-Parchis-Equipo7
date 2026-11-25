@@ -25,5 +25,30 @@
             <artifactId>parchis-reglas-mock</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-reglas</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-p2p</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-perfiles</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-datos</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>itson.parchis</groupId>
+            <artifactId>parchis-comunicacion-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
